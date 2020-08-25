@@ -20,7 +20,7 @@ docker run --name teapot -v `dirname $PWD/.`/teapot.nginx.conf:/etc/nginx/nginx.
 docker run --name mitm -v `dirname $PWD/.`/mitm.nginx.conf:/etc/nginx/nginx.conf:ro --network hoverflybug -p 8501:8501 -d nginx nginx-debug -g 'daemon off;'
 ```
 
-### 4. Run Hoverfly
+### 4. Run Hoverfly With "headers" Request Matcher
 
 ```
 docker run --name hoverfly -v `dirname $PWD/.`/simulation.json:/etc/hoverfly/simulation.json:ro --network hoverflybug -p 8888:8888 -p 8500:8500 -d spectolabs/hoverfly:latest -dest mitm -spy -import /etc/hoverfly/simulation.json -log-level debug
