@@ -54,6 +54,8 @@ docker run --rm --network hoverflybug curlimages/curl:latest -XPUT http://mitm:8
 
 With the old commit `9a0eee5` we get 400 from nginx due to issue https://github.com/SpectoLabs/hoverfly/issues/944 and with the commit `dd42a5b` the connection gets stuck.
 
+NOTE: curl's `--proxytunnel` is the best way to emulate how Netty actually does HTTP Connect, and this exact bug is present now in Netty and Hoverfly.
+
 ### 6. Tear down
 
 ```
