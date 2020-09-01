@@ -8,7 +8,7 @@ Build locally a dockerized Hoverfly, one from commit
 
 https://github.com/SpectoLabs/hoverfly/commit/9a0eee5f5dfd41e4597dc0725010048e94187794
 
-and another from the latest commit
+as `my-hoverfly:9a0eee5` and another from the latest commit
 
 https://github.com/SpectoLabs/hoverfly/commit/dd42a5b462d1fdbdac2b8dc2bf90a8d767a4caf3
 
@@ -36,6 +36,12 @@ docker run --name mitm -v `dirname $PWD/.`/mitm.nginx.conf:/etc/nginx/nginx.conf
 
 ```
 docker run --name hoverfly -v `dirname $PWD/.`/simulation.json:/etc/hoverfly/simulation.json:ro --network hoverflybug -p 8888:8888 -p 8500:8500 -d my-hoverfly:dd42a5b -dest mitm -spy -import /etc/hoverfly/simulation.json -plain-http-tunneling -log-level debug
+```
+
+or the older version:
+
+```
+docker run --name hoverfly -v `dirname $PWD/.`/simulation.json:/etc/hoverfly/simulation.json:ro --network hoverflybug -p 8888:8888 -p 8500:8500 -d my-hoverfly:9a0eee5 -dest mitm -spy -import /etc/hoverfly/simulation.json -plain-http-tunneling -log-level debug
 ```
 
 ### 5. Execute curl In-container
